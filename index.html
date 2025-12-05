@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>domo.go | Kit Publicitaire Complet (Meta & Google)</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -29,7 +27,6 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- Header -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -49,10 +46,8 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
-        <!-- Instructions Banner -->
         <div class="mb-8 bg-blue-50 border border-blue-200 p-6 rounded-xl shadow-sm">
             <div class="flex items-start gap-4">
                 <div class="bg-blue-100 p-3 rounded-full text-2xl">👋</div>
@@ -71,7 +66,6 @@
             </div>
         </div>
 
-        <!-- Navigation Tabs -->
         <div class="flex space-x-1 mb-8 overflow-x-auto pb-1">
             <button onclick="switchSection('variations')" id="tab-variations" class="active-tab px-6 py-3 text-sm font-medium rounded-t-lg transition flex-shrink-0 flex items-center gap-2">
                 <span>📝</span> Meta : 6 Variations
@@ -87,18 +81,15 @@
             </button>
         </div>
 
-        <!-- VIEW 1: META VARIATIONS -->
         <div id="view-variations" class="fade-in space-y-8">
             <div class="bg-teal-50 border-l-4 border-teal-500 p-4 rounded-r-lg mb-6">
                 <h3 class="font-bold text-teal-800">Meta Ads - Socle Commun</h3>
                 <p class="text-sm text-teal-700">Ces 6 variations sont conçues pour être utilisées sur tous les formats visuels (Images, Vidéos) en tant que texte principal. L'offre promotionnelle est incluse.</p>
             </div>
             <div id="variations-container" class="grid gap-8">
-                <!-- JS Injected -->
-            </div>
+                </div>
         </div>
 
-        <!-- VIEW 2: META CAROUSEL -->
         <div id="view-carousel" class="hidden fade-in space-y-6">
             <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                 <div class="border-b border-slate-100 pb-4 mb-6">
@@ -118,7 +109,6 @@
             </div>
         </div>
 
-        <!-- VIEW 3: META VIDEO -->
         <div id="view-video" class="hidden fade-in space-y-6">
             <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 text-center">
                 <div class="inline-block p-4 bg-purple-50 rounded-full mb-4">
@@ -134,7 +124,6 @@
             </div>
         </div>
 
-        <!-- VIEW 4: GOOGLE ADS -->
         <div id="view-google" class="hidden fade-in space-y-8">
             <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg mb-6">
                 <h3 class="font-bold text-blue-800">Google Ads (Search & PMax)</h3>
@@ -142,7 +131,6 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Google FR -->
                 <div class="space-y-6">
                     <div class="flex items-center gap-2 border-b-2 border-blue-100 pb-2">
                         <span class="text-2xl">🇫🇷</span>
@@ -155,7 +143,6 @@
                     <div id="google-fr-callouts" class="space-y-2"></div>
                 </div>
 
-                <!-- Google DE -->
                 <div class="space-y-6">
                     <div class="flex items-center gap-2 border-b-2 border-blue-100 pb-2">
                         <span class="text-2xl">🇩🇪</span>
@@ -172,12 +159,10 @@
 
     </main>
 
-    <!-- Toast Notification -->
     <div id="toast" class="fixed bottom-6 right-6 bg-slate-800 text-white px-5 py-3 rounded-lg shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-3 font-medium">
         <span class="text-xl">📋</span> Texte copié !
     </div>
     
-    <!-- Export Modal -->
     <div id="export-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-50 fade-in px-4">
         <div class="bg-white rounded-xl shadow-2xl p-6 max-w-lg w-full transform transition-all scale-100">
             <h3 class="text-lg font-bold text-slate-800 mb-2">Vos retours sont prêts</h3>
@@ -192,7 +177,6 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
     <script>
         // --- META ADS DATA ---
         const metaVariations = [
@@ -200,13 +184,15 @@
                 id: "var1",
                 angle: "Sérénité Familiale (Cible Aidants)",
                 fr: {
-                    primary: "Le plus beau cadeau, c’est la sérénité.\n\nAvec domo.go, vos proches ne sont jamais seuls. Une montre connectée simple et discrète qui veille sur eux 24h/24, même quand vous n'êtes pas là.\n\n✅ Détection de chute automatique\n✅ Bouton SOS facile d'accès\n✅ Suivi à distance via l'app\n\n🎁 1 mois offert avec le code : go25\n\nProtégez ceux que vous aimez dès aujourd'hui. 👇",
+                    // FEEDBACK APPLIQUÉ: Détection de chute en dernier et suppression de "automatique"
+                    primary: "Le plus beau cadeau, c’est la sérénité.\n\nAvec domo.go, vos proches ne sont jamais seuls. Une montre connectée simple et discrète qui veille sur eux 24h/24, même quand vous n'êtes pas là.\n\n✅ Bouton SOS facile d'accès\n✅ Suivi à distance via l'app\n✅ Détection de chute\n\n🎁 1 mois offert avec le code : go25\n\nProtégez ceux que vous aimez dès aujourd'hui. 👇",
                     headline: "Rassurez-vous, même à distance",
                     desc: "La sécurité au poignet de vos proches",
                     cta: "Acheter"
                 },
                 de: {
-                    primary: "Das schönste Geschenk ist Gelassenheit.\n\nMit domo.go sind Ihre Liebsten nie allein. Eine einfache und diskrete Smartwatch, die rund um die Uhr über sie wacht – auch wenn Sie nicht da sind.\n\n✅ Automatische Sturzerkennung\n✅ Einfacher SOS-Knopf\n✅ Überwachung via App\n\n🎁 1 Monat kostenlos mit Code: go25\n\nSchützen Sie Ihre Liebsten noch heute. 👇",
+                    // FEEDBACK APPLIQUÉ: Idem allemand
+                    primary: "Das schönste Geschenk ist Gelassenheit.\n\nMit domo.go sind Ihre Liebsten nie allein. Eine einfache und diskrete Smartwatch, die rund um die Uhr über sie wacht – auch wenn Sie nicht da sind.\n\n✅ Einfacher SOS-Knopf\n✅ Überwachung via App\n✅ Sturzerkennung\n\n🎁 1 Monat kostenlos mit Code: go25\n\nSchützen Sie Ihre Liebsten noch heute. 👇",
                     headline: "Beruhigt sein, auch aus der Ferne",
                     desc: "Sicherheit am Handgelenk Ihrer Liebsten",
                     cta: "Kaufen"
@@ -216,9 +202,10 @@
                 id: "var2",
                 angle: "Urgence & Sécurité (Fonctionnel)",
                 fr: {
-                    primary: "Quand chaque seconde compte.\n\ndomo.go alerte automatiquement en cas de chute ou de malaise. Pas besoin de chercher son téléphone : un bouton SOS directement au poignet pour une intervention rapide.\n\n🔹 Géolocalisation précise\n🔹 Appel d'urgence 24/7\n🔹 Batterie longue durée\n\n🎁 1 mois offert avec le code : go25\n\nUne technologie simple pour un enjeu essentiel : la vie.",
+                    // FEEDBACK APPLIQUÉ: Remplacé batterie longue durée par App mobile. Description changée.
+                    primary: "Quand chaque seconde compte.\n\ndomo.go alerte automatiquement en cas de chute ou de malaise. Pas besoin de chercher son téléphone : un bouton SOS directement au poignet pour une intervention rapide.\n\n🔹 Géolocalisation précise\n🔹 Appel d'urgence 24/7\n🔹 App mobile\n\n🎁 1 mois offert avec le code : go25\n\nUne technologie simple pour un enjeu essentiel : la vie.",
                     headline: "Une montre, une vraie protection",
-                    desc: "Détection de chute & SOS",
+                    desc: "Plus de sérénité",
                     cta: "En savoir plus"
                 },
                 de: {
@@ -232,15 +219,17 @@
                 id: "var3",
                 angle: "Indépendance (Seniors Actifs)",
                 fr: {
-                    primary: "Veiller sur eux, sans les priver de leur liberté.\n\ndomo.go est une montre élégante qui permet à vos proches de continuer leurs activités favorites (marche, jardinage, sorties) en toute sécurité.\n\n👉 Pas de stigmatisation (ressemble à une Apple Watch)\n👉 Fonctionne partout (pas juste à la maison)\n👉 Rassurant pour eux, et pour vous\n\n🎁 1 mois offert avec le code : go25\n\nL'indépendance en toute sécurité.",
+                    // FEEDBACK APPLIQUÉ: "Elégance avec la Samsung Galaxy Watch8". Description "Sécurité à domicile & activités"
+                    primary: "Veiller sur eux, sans les priver de leur liberté.\n\ndomo.go est une montre élégante qui permet à vos proches de continuer leurs activités favorites (marche, jardinage, sorties) en toute sécurité.\n\n👉 Elégance avec la Samsung Galaxy Watch8\n👉 Fonctionne partout (pas juste à la maison)\n👉 Rassurant pour eux, et pour vous\n\n🎁 1 mois offert avec le code : go25\n\nL'indépendance en toute sécurité.",
                     headline: "Votre liberté, en toute sécurité",
-                    desc: "Maintien à domicile & Activités",
+                    desc: "Sécurité à domicile & activités",
                     cta: "Acheter"
                 },
                 de: {
-                    primary: "Über sie wachen, ohne ihre Freiheit einzuschränken.\n\ndomo.go ist eine elegante Uhr, die es Ihren Liebsten ermöglicht, ihre Lieblingsaktivitäten (Spazieren, Gartenarbeit, Ausflüge) sicher fortzusetzen.\n\n👉 Keine Stigmatisierung (sieht aus wie eine Apple Watch)\n👉 Funktioniert überall (nicht nur zu Hause)\n👉 Beruhigend für sie und für Sie\n\n🎁 1 Monat kostenlos mit Code: go25\n\nUnabhängigkeit in Sicherheit.",
+                    // FEEDBACK APPLIQUÉ: Traduction des changements
+                    primary: "Über sie wachen, ohne ihre Freiheit einzuschränken.\n\ndomo.go ist eine elegante Uhr, die es Ihren Liebsten ermöglicht, ihre Lieblingsaktivitäten (Spazieren, Gartenarbeit, Ausflüge) sicher fortzusetzen.\n\n👉 Eleganz mit der Samsung Galaxy Watch8\n👉 Funktioniert überall (nicht nur zu Hause)\n👉 Beruhigend für sie und für Sie\n\n🎁 1 Monat kostenlos mit Code: go25\n\nUnabhängigkeit in Sicherheit.",
                     headline: "Ihre Freiheit, sicher geniessen",
-                    desc: "Sicher wohnen & aktiv bleiben",
+                    desc: "Sicherheit zu Hause & Aktivitäten",
                     cta: "Kaufen"
                 }
             },
@@ -248,7 +237,8 @@
                 id: "var4",
                 angle: "Simplicité (Facilité d'usage)",
                 fr: {
-                    primary: "Protéger sans compliquer.\n\nDécouvrez domo.go : la montre de sécurité facile à porter et à utiliser. Pas besoin d'être un expert en technologie pour être protégé.\n\n1️⃣ Enfilez la montre\n2️⃣ Vivez votre journée\n3️⃣ En cas de pépin, on est là\n\n🎁 1 mois offert avec le code : go25\n\nSimple. Discrète. Efficace.",
+                    // FEEDBACK APPLIQUÉ: "Découvrez la domo.go.... .... pour rester protégé."
+                    primary: "Protéger sans compliquer.\n\nDécouvrez la domo.go pour rester protégé.\n\n1️⃣ Enfilez la montre\n2️⃣ Vivez votre journée\n3️⃣ En cas de pépin, on est là\n\n🎁 1 mois offert avec le code : go25\n\nSimple. Discrète. Efficace.",
                     headline: "Simple. Discrète. Efficace.",
                     desc: "Facile à porter et utiliser",
                     cta: "En savoir plus"
@@ -280,7 +270,8 @@
                 id: "var6",
                 angle: "Cadeau & Fêtes 🎁",
                 fr: {
-                    primary: "Cette année, offrez bien plus qu'une montre. Offrez la tranquillité d'esprit.\n\ndomo.go est le cadeau utile et bienveillant pour protéger vos proches âgés :\n✨ Design élégant (loin des alarmes médicales)\n✨ Sécurité 24/7 (Chute, SOS, GPS)\n✨ Sérénité pour toute la famille\n\n🎁 1 mois offert avec le code : go25\n\nLe cadeau parfait pour prendre soin d'eux.",
+                    // FEEDBACK APPLIQUÉ: Suppression "âgés", suppression "(loin des...)", changement phrase de fin
+                    primary: "Cette année, offrez bien plus qu'une montre. Offrez la tranquillité d'esprit.\n\ndomo.go est le cadeau utile et bienveillant pour protéger vos proches :\n✨ Design élégant\n✨ Sécurité 24/7 (Chute, SOS, GPS)\n✨ Sérénité pour toute la famille\n\n🎁 1 mois offert avec le code : go25\n\nLe cadeau parfait pour Noël",
                     headline: "Offrez la sécurité en cadeau",
                     desc: "Le cadeau utile et rassurant",
                     cta: "Acheter"
@@ -406,7 +397,6 @@
                                 ${createFeedbackToggle(v.id + '_fr')}
                             </div>
                             
-                            <!-- Fields -->
                             <div class="group/item relative">
                                 <div class="flex justify-between items-end mb-1">
                                     <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide">TEXTE PRINCIPAL</label>
@@ -444,13 +434,11 @@
                                 <div id="fb-box-${v.id}_fr_cta" class="feedback-box pt-2 mt-1"><textarea id="fb-text-${v.id}_fr_cta" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Correction CTA..."></textarea></div>
                             </div>
                             
-                            <!-- Global Feedback Box -->
                             <div id="fb-box-${v.id}_fr" class="feedback-box pt-3 border-t border-red-50 mt-2">
                                 <textarea id="fb-text-${v.id}_fr" class="w-full p-3 text-sm border border-red-200 rounded-lg bg-red-50/50 focus:ring-2 focus:ring-red-200 outline-none resize-y min-h-[80px]" placeholder="Commentaire général FR..."></textarea>
                             </div>
                         </div>
 
-                        <!-- DE COLUMN -->
                         <div class="p-6 space-y-5 bg-slate-50/30">
                             <div class="flex items-center justify-between mb-2 border-b border-slate-100 pb-2">
                                 <div class="flex items-center gap-2"><span class="text-lg">🇩🇪</span><span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Allemand</span></div>
@@ -471,237 +459,4 @@
                             <div class="grid grid-cols-2 gap-3">
                                 <div class="group/item relative">
                                     <div class="flex justify-between items-end mb-1">
-                                        <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide">TITRE</label>
-                                        ${createFeedbackToggle(v.id + '_de_head', true)}
-                                    </div>
-                                    <div class="text-sm font-bold text-slate-700 bg-white border border-slate-200 p-3 rounded-lg cursor-pointer hover:border-teal-400 transition" onclick="copyText(this)">${v.de.headline}</div>
-                                    <div id="fb-box-${v.id}_de_head" class="feedback-box pt-2 mt-1"><textarea id="fb-text-${v.id}_de_head" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Korrektur Titel..."></textarea></div>
-                                </div>
-                                <div class="group/item relative">
-                                    <div class="flex justify-between items-end mb-1">
-                                        <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide">DESCRIPTION</label>
-                                        ${createFeedbackToggle(v.id + '_de_desc', true)}
-                                    </div>
-                                    <div class="text-sm text-slate-700 bg-white border border-slate-200 p-3 rounded-lg cursor-pointer hover:border-teal-400 transition" onclick="copyText(this)">${v.de.desc}</div>
-                                    <div id="fb-box-${v.id}_de_desc" class="feedback-box pt-2 mt-1"><textarea id="fb-text-${v.id}_de_desc" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Korrektur Beschr..."></textarea></div>
-                                </div>
-                            </div>
-
-                            <div class="group/item relative pt-2 border-t border-slate-50">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-slate-400">Button (CTA)</span>
-                                    <span class="font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded cursor-pointer" onclick="copyText(this)">${v.de.cta}</span>
-                                    ${createFeedbackToggle(v.id + '_de_cta', true)}
-                                </div>
-                                <div id="fb-box-${v.id}_de_cta" class="feedback-box pt-2 mt-1"><textarea id="fb-text-${v.id}_de_cta" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Korrektur CTA..."></textarea></div>
-                            </div>
-
-                            <div id="fb-box-${v.id}_de" class="feedback-box pt-3 border-t border-red-50 mt-2">
-                                <textarea id="fb-text-${v.id}_de" class="w-full p-3 text-sm border border-red-200 rounded-lg bg-red-50/50 focus:ring-2 focus:ring-red-200 outline-none resize-y min-h-[80px]" placeholder="Allg. Kommentar DE..."></textarea>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(div);
-            });
-        }
-
-        function renderCarousel() {
-            ['fr', 'de'].forEach(lang => {
-                document.getElementById(`carousel-${lang}-container`).innerHTML = carouselCards[lang].map(c => `
-                    <div class="group/item relative">
-                        <div class="flex justify-between items-end mb-1">
-                            <label class="text-xs font-bold text-slate-400 uppercase">${c.label}</label>
-                            ${createFeedbackToggle(c.id + '_' + lang, true)}
-                        </div>
-                        ${createCopyField(c.id + '_' + lang, null, c.text)}
-                        <div id="fb-box-${c.id}_${lang}" class="feedback-box mt-2">
-                            <textarea id="fb-text-${c.id}_${lang}" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Correction..."></textarea>
-                        </div>
-                    </div>
-                `).join('');
-            });
-        }
-
-        // --- RENDER FUNCTIONS (GOOGLE ADS) ---
-        function renderGoogleAds() {
-            // Helper to render a list of items
-            const renderList = (id, title, items, prefix) => {
-                const container = document.getElementById(id);
-                // Create a wrapper for the section
-                const sectionDiv = document.createElement('div');
-                sectionDiv.className = "bg-white border border-slate-200 rounded-lg p-4 mb-4";
-                
-                const header = document.createElement('div');
-                header.className = "flex justify-between items-center mb-3 pb-2 border-b border-slate-100";
-                header.innerHTML = `<h4 class="text-sm font-bold text-slate-700 uppercase tracking-wide">${title} <span class="text-slate-400 font-normal normal-case ml-1">(${items.length})</span></h4>`;
-                sectionDiv.appendChild(header);
-
-                const list = document.createElement('div');
-                list.className = "space-y-2";
-                
-                items.forEach((item, idx) => {
-                    const itemId = `${prefix}_${idx}`;
-                    const row = document.createElement('div');
-                    row.className = "flex gap-2 items-start group/gitem";
-                    row.innerHTML = `
-                        <div class="flex-grow text-sm text-slate-700 bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 p-2 rounded cursor-pointer transition relative" onclick="copyText(this)">
-                            ${item}
-                            <div class="absolute top-1.5 right-2 copy-icon text-blue-600 pointer-events-none opacity-0 group-hover/gitem:opacity-100">📋</div>
-                        </div>
-                        ${createFeedbackToggle(itemId, true)}
-                    `;
-                    // Add feedback box hidden by default
-                    const fbBox = document.createElement('div');
-                    fbBox.id = `fb-box-${itemId}`;
-                    fbBox.className = "feedback-box w-full mt-1 ml-1";
-                    fbBox.innerHTML = `<textarea id="fb-text-${itemId}" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Correction..."></textarea>`;
-                    
-                    const wrapper = document.createElement('div');
-                    wrapper.appendChild(row);
-                    wrapper.appendChild(fbBox);
-                    list.appendChild(wrapper);
-                });
-                
-                sectionDiv.appendChild(list);
-                container.appendChild(sectionDiv);
-            };
-
-            // Render FR
-            renderList('google-fr-headlines', 'Titres (30 car.)', googleAdsData.fr.headlines, 'g_fr_h');
-            renderList('google-fr-longheadlines', 'Titres Longs (90 car.)', googleAdsData.fr.longHeadlines, 'g_fr_lh');
-            renderList('google-fr-descriptions', 'Descriptions (90 car.)', googleAdsData.fr.descriptions, 'g_fr_d');
-            renderList('google-fr-callouts', 'Accroches (25 car.)', googleAdsData.fr.callouts, 'g_fr_c');
-
-            // Render DE
-            renderList('google-de-headlines', 'Titres (30 car.)', googleAdsData.de.headlines, 'g_de_h');
-            renderList('google-de-longheadlines', 'Titres Longs (90 car.)', googleAdsData.de.longHeadlines, 'g_de_lh');
-            renderList('google-de-descriptions', 'Descriptions (90 car.)', googleAdsData.de.descriptions, 'g_de_d');
-            renderList('google-de-callouts', 'Accroches (25 car.)', googleAdsData.de.callouts, 'g_de_c');
-        }
-
-
-        // --- LOGIC ---
-
-        function switchSection(id) {
-            ['variations', 'carousel', 'video', 'google'].forEach(s => {
-                document.getElementById(`view-${s}`).classList.add('hidden');
-                document.getElementById(`tab-${s}`).classList.remove('active-tab');
-                document.getElementById(`tab-${s}`).classList.add('inactive-tab');
-            });
-            document.getElementById(`view-${id}`).classList.remove('hidden');
-            document.getElementById(`tab-${id}`).classList.add('active-tab');
-            document.getElementById(`tab-${id}`).classList.remove('inactive-tab');
-        }
-
-        function toggleFeedback(id) {
-            const box = document.getElementById(`fb-box-${id}`);
-            const text = document.getElementById(`fb-text-${id}`);
-            if(box.style.display === 'block') {
-                if(!text.value.trim()) box.style.display = 'none';
-            } else {
-                box.style.display = 'block';
-                text.focus();
-            }
-        }
-
-        function copyText(el) {
-            let text = el.innerText.trim();
-            // Remove the clipboard icon text if captured
-            text = text.replace('📋', '');
-            
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(text).then(() => {
-                    const toast = document.getElementById('toast');
-                    toast.classList.remove('translate-y-20', 'opacity-0');
-                    setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 2000);
-                }).catch(err => {
-                    console.error('Async: Could not copy text: ', err);
-                    fallbackCopyTextToClipboard(text);
-                });
-            } else {
-                fallbackCopyTextToClipboard(text);
-            }
-        }
-
-        function fallbackCopyTextToClipboard(text) {
-            var textArea = document.createElement("textarea");
-            textArea.value = text;
-            
-            // Avoid scrolling to bottom
-            textArea.style.top = "0";
-            textArea.style.left = "0";
-            textArea.style.position = "fixed";
-
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-
-            try {
-                var successful = document.execCommand('copy');
-                if(successful) {
-                    const toast = document.getElementById('toast');
-                    toast.classList.remove('translate-y-20', 'opacity-0');
-                    setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 2000);
-                } else {
-                    alert('Impossible de copier automatiquement.');
-                }
-            } catch (err) {
-                console.error('Fallback: Oops, unable to copy', err);
-                alert('Erreur lors de la copie.');
-            }
-
-            document.body.removeChild(textArea);
-        }
-
-        function exportFeedback() {
-            let report = "RETOURS COPYWRITING ADS (domo.GO)\n========================================\n\n";
-            let hasFeedback = false;
-
-            document.querySelectorAll('textarea').forEach(ta => {
-                if(ta.value.trim()) {
-                    hasFeedback = true;
-                    let id = ta.id.replace('fb-text-', '');
-                    let context = id.startsWith('g_') ? 'GOOGLE ADS' : 'META ADS';
-                    let lang = id.includes('fr') ? 'FR' : (id.includes('de') ? 'DE' : 'GLOBAL');
-                    report += `[${context} - ${lang}] ID: ${id}\n> FEEDBACK: ${ta.value}\n----------------------------------------\n`;
-                }
-            });
-
-            if(!hasFeedback) {
-                alert("Aucun commentaire n'a été saisi.");
-                return;
-            }
-
-            document.getElementById('export-area').value = report;
-            document.getElementById('export-modal').classList.remove('hidden');
-            document.getElementById('export-modal').classList.add('flex');
-        }
-
-        function closeModal() {
-            document.getElementById('export-modal').classList.add('hidden');
-            document.getElementById('export-modal').classList.remove('flex');
-        }
-
-        function copyExport() {
-            const text = document.getElementById('export-area').value;
-            // Use fallback here as well
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(text).then(() => {
-                    alert("Copié !");
-                }).catch(err => {
-                    fallbackCopyTextToClipboard(text);
-                });
-            } else {
-                fallbackCopyTextToClipboard(text);
-            }
-        }
-
-        // Init
-        renderVariations();
-        renderCarousel();
-        renderGoogleAds();
-
-    </script>
-</body>
-</html>
+                                        <label
