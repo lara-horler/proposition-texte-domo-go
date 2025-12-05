@@ -1,49 +1,1413 @@
 <!DOCTYPE html>
+
 <html lang="fr">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>domo.go | Kit Publicitaire Complet (Meta & Google)</title>
+
     
+
+    <!-- Tailwind CSS -->
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     
+
+    <!-- Google Fonts -->
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+
+
     <style>
+
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #334155; }
+
         .active-tab { border-bottom: 3px solid #0f766e; color: #0f766e; font-weight: 700; background-color: #f0fdfa; }
+
         .inactive-tab { color: #64748b; background-color: white; border-bottom: 3px solid transparent; }
+
         .inactive-tab:hover { color: #334155; background-color: #f1f5f9; }
+
         .fade-in { animation: fadeIn 0.4s ease-out; }
+
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
         .copy-icon { opacity: 0; transition: opacity 0.2s; transform: scale(0.9); }
+
         .group:hover .copy-icon { opacity: 1; transform: scale(1); }
+
         .group\/gitem:hover .copy-icon { opacity: 1; }
+
         
+
         /* Feedback Box */
+
         .feedback-box { display: none; }
+
         .feedback-active .feedback-box { display: block; }
+
     </style>
+
 </head>
+
 <body class="min-h-screen flex flex-col">
 
+
+
+    <!-- Header -->
+
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
             <div class="flex justify-between h-16 items-center">
+
                 <div class="flex items-center gap-3">
+
                     <div class="bg-teal-700 text-white w-9 h-9 flex items-center justify-center rounded-lg font-bold text-xl">D</div>
+
                     <div>
+
                         <h1 class="font-bold text-lg tracking-tight text-slate-900 leading-tight">domo.go</h1>
+
                         <p class="text-xs text-slate-500 font-medium">Kit Publicitaire Complet (Meta & Google)</p>
+
                     </div>
+
                 </div>
+
                 <div class="flex items-center gap-3">
+
                     <button onclick="exportFeedback()" class="bg-slate-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700 transition flex items-center gap-2 shadow-sm animate-pulse">
+
                         <span>📤</span> <span class="hidden sm:inline">Envoyer mes retours</span>
+
                     </button>
+
                 </div>
+
             </div>
+
         </div>
+
     </header>
 
-    <main class="flex-grow max-w-7xl w
+
+
+    <!-- Main Content -->
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        
+
+        <!-- Instructions Banner -->
+
+        <div class="mb-8 bg-blue-50 border border-blue-200 p-6 rounded-xl shadow-sm">
+
+            <div class="flex items-start gap-4">
+
+                <div class="bg-blue-100 p-3 rounded-full text-2xl">👋</div>
+
+                <div>
+
+                    <h3 class="font-bold text-blue-900 text-lg">Consignes pour la validation</h3>
+
+                    <p class="text-sm text-blue-800 mt-2 leading-relaxed">
+
+                        Bienvenue sur votre espace de validation. Voici comment procéder :
+
+                    </p>
+
+                    <ol class="list-decimal list-inside text-sm text-blue-800 mt-2 space-y-1 font-medium">
+
+                        <li>Parcourez les onglets ci-dessous (Meta & Google).</li>
+
+                        <li>Pour chaque texte (titre, description, CTA...), cliquez sur le petit bouton <span class="inline-flex items-center bg-white border border-blue-200 px-2 py-0.5 rounded text-xs text-slate-500 mx-1">💬 Feedback</span> situé à droite du titre pour laisser une correction.</li>
+
+                        <li>Saisissez votre correction ou commentaire dans la zone qui s'affiche.</li>
+
+                        <li>Une fois terminé, cliquez sur le bouton <strong>"Envoyer mes retours"</strong> en haut à droite pour générer le rapport final.</li>
+
+                    </ol>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Navigation Tabs -->
+
+        <div class="flex space-x-1 mb-8 overflow-x-auto pb-1">
+
+            <button onclick="switchSection('variations')" id="tab-variations" class="active-tab px-6 py-3 text-sm font-medium rounded-t-lg transition flex-shrink-0 flex items-center gap-2">
+
+                <span>📝</span> Meta : 6 Variations
+
+            </button>
+
+            <button onclick="switchSection('carousel')" id="tab-carousel" class="inactive-tab px-6 py-3 text-sm font-medium rounded-t-lg transition flex-shrink-0 flex items-center gap-2">
+
+                <span>🎠</span> Meta : Carrousel
+
+            </button>
+
+            <button onclick="switchSection('video')" id="tab-video" class="inactive-tab px-6 py-3 text-sm font-medium rounded-t-lg transition flex-shrink-0 flex items-center gap-2">
+
+                <span>🎥</span> Meta : Vidéo
+
+            </button>
+
+            <button onclick="switchSection('google')" id="tab-google" class="inactive-tab px-6 py-3 text-sm font-medium rounded-t-lg transition flex-shrink-0 flex items-center gap-2 border-l border-slate-200 ml-2">
+
+                <span>🔍</span> Google Ads (Search/PMax)
+
+            </button>
+
+        </div>
+
+
+
+        <!-- VIEW 1: META VARIATIONS -->
+
+        <div id="view-variations" class="fade-in space-y-8">
+
+            <div class="bg-teal-50 border-l-4 border-teal-500 p-4 rounded-r-lg mb-6">
+
+                <h3 class="font-bold text-teal-800">Meta Ads - Socle Commun</h3>
+
+                <p class="text-sm text-teal-700">Ces 6 variations sont conçues pour être utilisées sur tous les formats visuels (Images, Vidéos) en tant que texte principal. L'offre promotionnelle est incluse.</p>
+
+            </div>
+
+            <div id="variations-container" class="grid gap-8">
+
+                <!-- JS Injected -->
+
+            </div>
+
+        </div>
+
+
+
+        <!-- VIEW 2: META CAROUSEL -->
+
+        <div id="view-carousel" class="hidden fade-in space-y-6">
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+
+                <div class="border-b border-slate-100 pb-4 mb-6">
+
+                    <h2 class="text-lg font-bold text-slate-800">Détails des Cartes Carrousel</h2>
+
+                    <p class="text-sm text-slate-600 mt-1">Titres spécifiques à placer sous chaque image du carrousel.</p>
+
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                    <div class="space-y-2">
+
+                        <h3 class="font-bold text-teal-700 mb-2">🇫🇷 Français</h3>
+
+                        <div class="space-y-3" id="carousel-fr-container"></div>
+
+                    </div>
+
+                    <div class="space-y-2">
+
+                        <h3 class="font-bold text-teal-700 mb-2">🇩🇪 Allemand</h3>
+
+                        <div class="space-y-3" id="carousel-de-container"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- VIEW 3: META VIDEO -->
+
+        <div id="view-video" class="hidden fade-in space-y-6">
+
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 text-center">
+
+                <div class="inline-block p-4 bg-purple-50 rounded-full mb-4">
+
+                    <span class="text-4xl">🎥</span>
+
+                </div>
+
+                <h2 class="text-xl font-bold text-slate-800 mb-2">Publicités Vidéo</h2>
+
+                <p class="text-slate-600 max-w-lg mx-auto mb-8">
+
+                    La vidéo est déjà montée. Pour le texte qui accompagne la publication, <strong>utilisez l'une des 6 variations</strong> disponibles dans le premier onglet.
+
+                </p>
+
+                <button onclick="switchSection('variations')" class="bg-teal-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-teal-700 transition shadow-md">
+
+                    ← Choisir un texte
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- VIEW 4: GOOGLE ADS -->
+
+        <div id="view-google" class="hidden fade-in space-y-8">
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg mb-6">
+
+                <h3 class="font-bold text-blue-800">Google Ads (Search & PMax)</h3>
+
+                <p class="text-sm text-blue-700">Ces éléments sont à copier-coller pour créer vos annonces Responsive Search Ads (RSA) et vos groupes d'assets Performance Max. Vous pouvez commenter chaque ligne.</p>
+
+            </div>
+
+
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <!-- Google FR -->
+
+                <div class="space-y-6">
+
+                    <div class="flex items-center gap-2 border-b-2 border-blue-100 pb-2">
+
+                        <span class="text-2xl">🇫🇷</span>
+
+                        <h3 class="font-bold text-lg text-slate-800">Annonces Français</h3>
+
+                    </div>
+
+                    
+
+                    <div id="google-fr-headlines" class="space-y-2"></div>
+
+                    <div id="google-fr-longheadlines" class="space-y-2"></div>
+
+                    <div id="google-fr-descriptions" class="space-y-2"></div>
+
+                    <div id="google-fr-callouts" class="space-y-2"></div>
+
+                </div>
+
+
+
+                <!-- Google DE -->
+
+                <div class="space-y-6">
+
+                    <div class="flex items-center gap-2 border-b-2 border-blue-100 pb-2">
+
+                        <span class="text-2xl">🇩🇪</span>
+
+                        <h3 class="font-bold text-lg text-slate-800">Annonces Allemand</h3>
+
+                    </div>
+
+
+
+                    <div id="google-de-headlines" class="space-y-2"></div>
+
+                    <div id="google-de-longheadlines" class="space-y-2"></div>
+
+                    <div id="google-de-descriptions" class="space-y-2"></div>
+
+                    <div id="google-de-callouts" class="space-y-2"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </main>
+
+
+
+    <!-- Toast Notification -->
+
+    <div id="toast" class="fixed bottom-6 right-6 bg-slate-800 text-white px-5 py-3 rounded-lg shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-3 font-medium">
+
+        <span class="text-xl">📋</span> Texte copié !
+
+    </div>
+
+    
+
+    <!-- Export Modal -->
+
+    <div id="export-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-50 fade-in px-4">
+
+        <div class="bg-white rounded-xl shadow-2xl p-6 max-w-lg w-full transform transition-all scale-100">
+
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Vos retours sont prêts</h3>
+
+            <p class="text-sm text-slate-600 mb-4">Copiez le résumé ci-dessous et envoyez-le nous par email.</p>
+
+            <textarea id="export-area" class="w-full h-48 p-4 border border-slate-200 rounded-lg bg-slate-50 text-xs font-mono mb-4 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none resize-none" readonly></textarea>
+
+            <div class="flex justify-end gap-3">
+
+                <button onclick="closeModal()" class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg font-medium transition">Fermer</button>
+
+                <button onclick="copyExport()" class="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 font-medium shadow-sm transition flex items-center gap-2">
+
+                    <span>📋</span> Copier
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT LOGIC -->
+
+    <script>
+
+        // --- META ADS DATA ---
+
+        const metaVariations = [
+
+            {
+
+                id: "var1",
+
+                angle: "Sérénité Familiale (Cible Aidants)",
+
+                fr: {
+
+                    primary: "Le plus beau cadeau, c’est la sérénité.\n\nAvec domo.go, vos proches ne sont jamais seuls. Une montre connectée simple et discrète qui veille sur eux 24h/24, même quand vous n'êtes pas là.\n\n✅ Détection de chute automatique\n✅ Bouton SOS facile d'accès\n✅ Suivi à distance via l'app\n\n🎁 1 mois offert avec le code : go25\n\nProtégez ceux que vous aimez dès aujourd'hui. 👇",
+
+                    headline: "Rassurez-vous, même à distance",
+
+                    desc: "La sécurité au poignet de vos proches",
+
+                    cta: "Acheter"
+
+                },
+
+                de: {
+
+                    primary: "Das schönste Geschenk ist Gelassenheit.\n\nMit domo.go sind Ihre Liebsten nie allein. Eine einfache und diskrete Smartwatch, die rund um die Uhr über sie wacht – auch wenn Sie nicht da sind.\n\n✅ Automatische Sturzerkennung\n✅ Einfacher SOS-Knopf\n✅ Überwachung via App\n\n🎁 1 Monat kostenlos mit Code: go25\n\nSchützen Sie Ihre Liebsten noch heute. 👇",
+
+                    headline: "Beruhigt sein, auch aus der Ferne",
+
+                    desc: "Sicherheit am Handgelenk Ihrer Liebsten",
+
+                    cta: "Kaufen"
+
+                }
+
+            },
+
+            {
+
+                id: "var2",
+
+                angle: "Urgence & Sécurité (Fonctionnel)",
+
+                fr: {
+
+                    primary: "Quand chaque seconde compte.\n\ndomo.go alerte automatiquement en cas de chute ou de malaise. Pas besoin de chercher son téléphone : un bouton SOS directement au poignet pour une intervention rapide.\n\n🔹 Géolocalisation précise\n🔹 Appel d'urgence 24/7\n🔹 Batterie longue durée\n\n🎁 1 mois offert avec le code : go25\n\nUne technologie simple pour un enjeu essentiel : la vie.",
+
+                    headline: "Une montre, une vraie protection",
+
+                    desc: "Détection de chute & SOS",
+
+                    cta: "En savoir plus"
+
+                },
+
+                de: {
+
+                    primary: "Wenn jede Sekunde zählt.\n\ndomo.go alarmiert automatisch bei einem Sturz oder Unwohlsein. Kein Suchen nach dem Telefon: Ein SOS-Knopf direkt am Handgelenk für schnelles Eingreifen.\n\n🔹 Präzise GPS-Ortung\n🔹 24/7 Notruf\n🔹 Lange Akkulaufzeit\n\n🎁 1 Monat kostenlos mit Code: go25\n\nEinfache Technologie für das Wichtigste: Das Leben.",
+
+                    headline: "Eine Uhr, ein echter Schutz",
+
+                    desc: "Sturzerkennung & SOS",
+
+                    cta: "Mehr dazu"
+
+                }
+
+            },
+
+            {
+
+                id: "var3",
+
+                angle: "Indépendance (Seniors Actifs)",
+
+                fr: {
+
+                    primary: "Veiller sur eux, sans les priver de leur liberté.\n\ndomo.go est une montre élégante qui permet à vos proches de continuer leurs activités favorites (marche, jardinage, sorties) en toute sécurité.\n\n👉 Pas de stigmatisation (ressemble à une Apple Watch)\n👉 Fonctionne partout (pas juste à la maison)\n👉 Rassurant pour eux, et pour vous\n\n🎁 1 mois offert avec le code : go25\n\nL'indépendance en toute sécurité.",
+
+                    headline: "Votre liberté, en toute sécurité",
+
+                    desc: "Maintien à domicile & Activités",
+
+                    cta: "Acheter"
+
+                },
+
+                de: {
+
+                    primary: "Über sie wachen, ohne ihre Freiheit einzuschränken.\n\ndomo.go ist eine elegante Uhr, die es Ihren Liebsten ermöglicht, ihre Lieblingsaktivitäten (Spazieren, Gartenarbeit, Ausflüge) sicher fortzusetzen.\n\n👉 Keine Stigmatisierung (sieht aus wie eine Apple Watch)\n👉 Funktioniert überall (nicht nur zu Hause)\n👉 Beruhigend für sie und für Sie\n\n🎁 1 Monat kostenlos mit Code: go25\n\nUnabhängigkeit in Sicherheit.",
+
+                    headline: "Ihre Freiheit, sicher geniessen",
+
+                    desc: "Sicher wohnen & aktiv bleiben",
+
+                    cta: "Kaufen"
+
+                }
+
+            },
+
+            {
+
+                id: "var4",
+
+                angle: "Simplicité (Facilité d'usage)",
+
+                fr: {
+
+                    primary: "Protéger sans compliquer.\n\nDécouvrez domo.go : la montre de sécurité facile à porter et à utiliser. Pas besoin d'être un expert en technologie pour être protégé.\n\n1️⃣ Enfilez la montre\n2️⃣ Vivez votre journée\n3️⃣ En cas de pépin, on est là\n\n🎁 1 mois offert avec le code : go25\n\nSimple. Discrète. Efficace.",
+
+                    headline: "Simple. Discrète. Efficace.",
+
+                    desc: "Facile à porter et utiliser",
+
+                    cta: "En savoir plus"
+
+                },
+
+                de: {
+
+                    primary: "Schützen ohne zu komplizieren.\n\nEntdecken Sie domo.go: die Sicherheitsuhr, die einfach zu tragen und zu bedienen ist. Man muss kein Technik-Experte sein, um geschützt zu sein.\n\n1️⃣ Uhr anlegen\n2️⃣ Den Tag geniessen\n3️⃣ Im Notfall sind wir da\n\n🎁 1 Monat kostenlos mit Code: go25\n\nEinfach. Diskret. Effizient.",
+
+                    headline: "Einfach. Diskret. Effizient.",
+
+                    desc: "Einfach zu tragen und bedienen",
+
+                    cta: "Mehr dazu"
+
+                }
+
+            },
+
+            {
+
+                id: "var5",
+
+                angle: "Lien & Connexion (App Famille)",
+
+                fr: {
+
+                    primary: "Parce qu’on ne peut pas toujours être là.\n\nLa montre domo.go prend le relais quand vous êtes absent. Grâce à l'application famille sécurisée, gardez un lien constant et bienveillant avec vos parents.\n\n☑️ Notifications de sécurité\n☑️ Localisation en cas d'alerte\n☑️ Tranquillité d'esprit partagée\n\n🎁 1 mois offert avec le code : go25\n\nRestez connectés à ceux qui comptent.",
+
+                    headline: "Le lien constant avec vos proches",
+
+                    desc: "Application Famille incluse",
+
+                    cta: "Acheter"
+
+                },
+
+                de: {
+
+                    primary: "Weil man nicht immer da sein kann.\n\nDie domo.go Uhr übernimmt, wenn Sie abwesend sind. Dank der sicheren Familien-App bleiben Sie in ständiger und fürsorglicher Verbindung mit Ihren Eltern.\n\n☑️ Sicherheitsbenachrichtigungen\n☑️ Ortung im Alarmfall\n☑️ Gemeinsame Gelassenheit\n\n🎁 1 Monat kostenlos mit Code: go25\n\nBleiben Sie mit denen verbunden, die zählen.",
+
+                    headline: "Die Verbindung zu Ihren Liebsten",
+
+                    desc: "Inklusive Familien-App",
+
+                    cta: "Kaufen"
+
+                }
+
+            },
+
+            {
+
+                id: "var6",
+
+                angle: "Cadeau & Fêtes 🎁",
+
+                fr: {
+
+                    primary: "Cette année, offrez bien plus qu'une montre. Offrez la tranquillité d'esprit.\n\ndomo.go est le cadeau utile et bienveillant pour protéger vos proches âgés :\n✨ Design élégant (loin des alarmes médicales)\n✨ Sécurité 24/7 (Chute, SOS, GPS)\n✨ Sérénité pour toute la famille\n\n🎁 1 mois offert avec le code : go25\n\nLe cadeau parfait pour prendre soin d'eux.",
+
+                    headline: "Offrez la sécurité en cadeau",
+
+                    desc: "Le cadeau utile et rassurant",
+
+                    cta: "Acheter"
+
+                },
+
+                de: {
+
+                    primary: "Schenken Sie dieses Jahr mehr als nur eine Uhr. Schenken Sie inneren Frieden.\n\ndomo.go ist das sinnvolle und fürsorgliche Geschenk für Ihre älteren Angehörigen:\n✨ Elegantes Design (kein medizinisches Aussehen)\n✨ 24/7 Sicherheit (Sturz, SOS, GPS)\n✨ Gelassenheit für die ganze Familie\n\n🎁 1 Monat kostenlos mit Code: go25\n\nDas perfekte Geschenk, um sich um sie zu kümmern.",
+
+                    headline: "Sicherheit als Geschenk",
+
+                    desc: "Das sinnvolle Geschenk",
+
+                    cta: "Kaufen"
+
+                }
+
+            }
+
+        ];
+
+
+
+        const carouselCards = {
+
+            fr: [
+
+                { id: "c1", label: "CARTE 1 (Design)", text: "Discrète et élégante" },
+
+                { id: "c2", label: "CARTE 2 (Chute)", text: "Détection de chute auto" },
+
+                { id: "c3", label: "CARTE 3 (Urgence)", text: "Bouton SOS Urgence" },
+
+                { id: "c4", label: "CARTE 4 (Famille)", text: "Lien avec la famille" }
+
+            ],
+
+            de: [
+
+                { id: "c1d", label: "KARTE 1 (Design)", text: "Diskret und elegant" },
+
+                { id: "c2d", label: "KARTE 2 (Sturz)", text: "Autom. Sturzerkennung" },
+
+                { id: "c3d", label: "KARTE 3 (Notfall)", text: "SOS-Notrufknopf" },
+
+                { id: "c4d", label: "KARTE 4 (Familie)", text: "Verbindung zur Familie" }
+
+            ]
+
+        };
+
+
+
+        // --- GOOGLE ADS DATA ---
+
+        const googleAdsData = {
+
+            fr: {
+
+                headlines: [
+
+                    "Montre sécurité senior", "domo.go montre connectée", "Protégez vos proches", "Détection de chute", 
+
+                    "Bouton SOS intégré", "Veillez à distance", "La sérénité au quotidien", "Sécurité 24h/24", 
+
+                    "Alerte Chute Automatique", "Simple et discrète", "Géolocalisation GPS", "Rassurez toute la Famille", 
+
+                    "Découvrir domo.go", "Maintien à domicile", "Installation facile"
+
+                ],
+
+                longHeadlines: [
+
+                    "La montre connectée qui protège vos proches 24h/24. domo.go veille sur eux à domicile.",
+
+                    "Vos proches ne sont jamais seuls en cas d’urgence. Découvrez la montre de sécurité domo.go.",
+
+                    "Détection de chute, bouton SOS, suivi à distance. La montre qui rassure toute la famille.",
+
+                    "Veillez sur ses parents, même à distance. Une montre connectée pensée pour leur sécurité.",
+
+                    "Une technologie simple pour un enjeu essentiel : la sécurité quotidienne, sans stress."
+
+                ],
+
+                descriptions: [
+
+                    "Chute détectée ? domo.go alerte automatiquement. Une intervention rapide quand ça compte.",
+
+                    "Parce qu’on ne peut pas toujours être là, domo.go prend le relais. Protégez ceux que vous aimez.",
+
+                    "Rassurez-vous même quand vous êtes loin. domo.go surveille, alerte et protège. Commandez !",
+
+                    "Une montre facile à porter et à utiliser. La sécurité discrète au poignet de vos proches."
+
+                ],
+
+                callouts: [
+
+                    "Détection de chute", "Bouton SOS Urgence", "Géolocalisation GPS", "Design Élégant", 
+
+                    "Application Famille", "Livraison Rapide", "Sécurité 24/7"
+
+                ]
+
+            },
+
+            de: {
+
+                headlines: [
+
+                    "Sicherheitsuhr Senioren", "domo.go Smartwatch", "Ihre Liebsten schützen", "Automatische Sturzerkennung", 
+
+                    "Integrierter SOS-Knopf", "Sicherheit aus der Ferne", "Sicherheit im Alltag", "Sicherheit rund um die Uhr", 
+
+                    "Automatischer Notruf", "Einfach & Diskret", "GPS-Ortung", "Familie beruhigen", 
+
+                    "domo.go entdecken", "Länger zu Hause leben", "Einfache Einrichtung"
+
+                ],
+
+                longHeadlines: [
+
+                    "Die Smartwatch, die Ihre Liebsten 24/7 schützt. domo.go wacht zu Hause über sie.",
+
+                    "Mit domo.go sind Ihre Liebsten im Notfall nie allein. Entdecken Sie die Sicherheitsuhr.",
+
+                    "Sturzerkennung, SOS-Knopf, Fernüberwachung. Die Uhr, die die ganze Familie beruhigt.",
+
+                    "Auf Eltern achten, auch aus der Distanz. Eine Smartwatch, entwickelt für ihre Sicherheit.",
+
+                    "Einfache Technologie für Sicherheit im Alltag. Ohne Stress, immer bestens geschützt."
+
+                ],
+
+                descriptions: [
+
+                    "Sturz erkannt? domo.go alarmiert automatisch. Schnelle Hilfe, wenn jede Sekunde zählt.",
+
+                    "Weil man nicht immer da sein kann: domo.go übernimmt. Schützen Sie Ihre Liebsten effektiv.",
+
+                    "Beruhigt sein, auch aus der Ferne. domo.go überwacht, alarmiert und schützt. Jetzt kaufen!",
+
+                    "Einfach zu tragen und zu bedienen. Diskrete Sicherheit am Handgelenk Ihrer Angehörigen."
+
+                ],
+
+                callouts: [
+
+                    "Sturzerkennung", "SOS-Notrufknopf", "GPS-Ortung", "Elegantes Design", 
+
+                    "Familien-App", "Schnelle Lieferung", "Sicherheit 24/7"
+
+                ]
+
+            }
+
+        };
+
+
+
+        // --- RENDER FUNCTIONS (META) ---
+
+
+
+        function createFeedbackToggle(id, small = false) {
+
+            return `
+
+                <button onclick="toggleFeedback('${id}')" class="text-xs text-slate-400 hover:text-red-500 flex items-center gap-1 transition-colors opacity-60 hover:opacity-100" title="Signaler une correction">
+
+                    <span class="${small ? 'text-xs' : 'text-sm'}">💬</span> ${small ? '' : 'Feedback'}
+
+                </button>
+
+            `;
+
+        }
+
+
+
+        function createCopyField(id, label, text) {
+
+            return `
+
+                <div class="relative group/field">
+
+                    ${label ? `<label class="block text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-wide">${label}</label>` : ''}
+
+                    <div class="text-sm text-slate-700 whitespace-pre-line bg-white border border-slate-200 p-3 rounded-lg cursor-pointer hover:border-teal-400 hover:shadow-sm hover:bg-teal-50/10 transition-all duration-200 relative overflow-hidden" onclick="copyText(this)">
+
+                        ${text}
+
+                        <div class="absolute top-2 right-2 copy-icon text-teal-600 bg-white p-1.5 rounded-md shadow-sm border border-slate-100 pointer-events-none">📋</div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        function renderVariations() {
+
+            const container = document.getElementById('variations-container');
+
+            container.innerHTML = '';
+
+            
+
+            metaVariations.forEach((v, i) => {
+
+                const div = document.createElement('div');
+
+                div.className = "bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-md transition-all duration-300";
+
+                div.innerHTML = `
+
+                    <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center">
+
+                        <div class="flex items-center gap-3">
+
+                            <span class="bg-white border border-slate-200 text-slate-500 text-xs font-bold px-2 py-1 rounded shadow-sm">Var ${i+1}</span>
+
+                            <span class="font-bold text-slate-800 text-sm">${v.angle}</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+
+                        <div class="p-6 space-y-5">
+
+                            <div class="flex items-center justify-between mb-2 border-b border-slate-100 pb-2">
+
+                                <div class="flex items-center gap-2"><span class="text-lg">🇫🇷</span><span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Français</span></div>
+
+                                ${createFeedbackToggle(v.id + '_fr')}
+
+                            </div>
+
+                            
+
+                            <!-- Fields -->
+
+                            <div class="group/item relative">
+
+                                <div class="flex justify-between items-end mb-1">
+
+                                    <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide">TEXTE PRINCIPAL</label>
+
+                                    ${createFeedbackToggle(v.id + '_fr_prim', true)}
+
+                                </div>
+
+                                <div class="text-sm text-slate-700 whitespace-pre-line bg-white border border-slate-200 p-3 rounded-lg cursor-pointer hover:border-teal-400 transition" onclick="copyText(this)">${v.fr.primary}</div>
+
+                                <div id="fb-box-${v.id}_fr_prim" class="feedback-box pt-2 mt-1"><textarea id="fb-text-${v.id}_fr_prim" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Correction Texte Principal..."></textarea></div>
+
+                            </div>
+
+
+
+                            <div class="grid grid-cols-2 gap-3">
+
+                                <div class="group/item relative">
+
+                                    <div class="flex justify-between items-end mb-1">
+
+                                        <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide">TITRE</label>
+
+                                        ${createFeedbackToggle(v.id + '_fr_head', true)}
+
+                                    </div>
+
+                                    <div class="text-sm font-bold text-slate-700 bg-white border border-slate-200 p-3 rounded-lg cursor-pointer hover:border-teal-400 transition" onclick="copyText(this)">${v.fr.headline}</div>
+
+                                    <div id="fb-box-${v.id}_fr_head" class="feedback-box pt-2 mt-1"><textarea id="fb-text-${v.id}_fr_head" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Correction Titre..."></textarea></div>
+
+                                </div>
+
+                                <div class="group/item relative">
+
+                                    <div class="flex justify-between items-end mb-1">
+
+                                        <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide">DESCRIPTION</label>
+
+                                        ${createFeedbackToggle(v.id + '_fr_desc', true)}
+
+                                    </div>
+
+                                    <div class="text-sm text-slate-700 bg-white border border-slate-200 p-3 rounded-lg cursor-pointer hover:border-teal-400 transition" onclick="copyText(this)">${v.fr.desc}</div>
+
+                                    <div id="fb-box-${v.id}_fr_desc" class="feedback-box pt-2 mt-1"><textarea id="fb-text-${v.id}_fr_desc" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Correction Desc..."></textarea></div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="group/item relative pt-2 border-t border-slate-50">
+
+                                <div class="flex justify-between items-center">
+
+                                    <span class="text-xs text-slate-400">Bouton (CTA)</span>
+
+                                    <span class="font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded cursor-pointer" onclick="copyText(this)">${v.fr.cta}</span>
+
+                                    ${createFeedbackToggle(v.id + '_fr_cta', true)}
+
+                                </div>
+
+                                <div id="fb-box-${v.id}_fr_cta" class="feedback-box pt-2 mt-1"><textarea id="fb-text-${v.id}_fr_cta" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Correction CTA..."></textarea></div>
+
+                            </div>
+
+                            
+
+                            <!-- Global Feedback Box -->
+
+                            <div id="fb-box-${v.id}_fr" class="feedback-box pt-3 border-t border-red-50 mt-2">
+
+                                <textarea id="fb-text-${v.id}_fr" class="w-full p-3 text-sm border border-red-200 rounded-lg bg-red-50/50 focus:ring-2 focus:ring-red-200 outline-none resize-y min-h-[80px]" placeholder="Commentaire général FR..."></textarea>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- DE COLUMN -->
+
+                        <div class="p-6 space-y-5 bg-slate-50/30">
+
+                            <div class="flex items-center justify-between mb-2 border-b border-slate-100 pb-2">
+
+                                <div class="flex items-center gap-2"><span class="text-lg">🇩🇪</span><span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Allemand</span></div>
+
+                                ${createFeedbackToggle(v.id + '_de')}
+
+                            </div>
+
+
+
+                            <div class="group/item relative">
+
+                                <div class="flex justify-between items-end mb-1">
+
+                                    <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide">TEXTE PRINCIPAL</label>
+
+                                    ${createFeedbackToggle(v.id + '_de_prim', true)}
+
+                                </div>
+
+                                <div class="flex items-start gap-2">
+
+                                    <div class="flex-grow text-sm text-slate-700 whitespace-pre-line bg-white border border-slate-200 p-3 rounded-lg cursor-pointer hover:border-teal-400 transition" onclick="copyText(this)">${v.de.primary}</div>
+
+                                </div>
+
+                                <div id="fb-box-${v.id}_de_prim" class="feedback-box pt-2 mt-1"><textarea id="fb-text-${v.id}_de_prim" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Korrektur Primärtext..."></textarea></div>
+
+                            </div>
+
+
+
+                            <div class="grid grid-cols-2 gap-3">
+
+                                <div class="group/item relative">
+
+                                    <div class="flex justify-between items-end mb-1">
+
+                                        <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide">TITRE</label>
+
+                                        ${createFeedbackToggle(v.id + '_de_head', true)}
+
+                                    </div>
+
+                                    <div class="text-sm font-bold text-slate-700 bg-white border border-slate-200 p-3 rounded-lg cursor-pointer hover:border-teal-400 transition" onclick="copyText(this)">${v.de.headline}</div>
+
+                                    <div id="fb-box-${v.id}_de_head" class="feedback-box pt-2 mt-1"><textarea id="fb-text-${v.id}_de_head" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Korrektur Titel..."></textarea></div>
+
+                                </div>
+
+                                <div class="group/item relative">
+
+                                    <div class="flex justify-between items-end mb-1">
+
+                                        <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide">DESCRIPTION</label>
+
+                                        ${createFeedbackToggle(v.id + '_de_desc', true)}
+
+                                    </div>
+
+                                    <div class="text-sm text-slate-700 bg-white border border-slate-200 p-3 rounded-lg cursor-pointer hover:border-teal-400 transition" onclick="copyText(this)">${v.de.desc}</div>
+
+                                    <div id="fb-box-${v.id}_de_desc" class="feedback-box pt-2 mt-1"><textarea id="fb-text-${v.id}_de_desc" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Korrektur Beschr..."></textarea></div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="group/item relative pt-2 border-t border-slate-50">
+
+                                <div class="flex justify-between items-center">
+
+                                    <span class="text-xs text-slate-400">Button (CTA)</span>
+
+                                    <span class="font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded cursor-pointer" onclick="copyText(this)">${v.de.cta}</span>
+
+                                    ${createFeedbackToggle(v.id + '_de_cta', true)}
+
+                                </div>
+
+                                <div id="fb-box-${v.id}_de_cta" class="feedback-box pt-2 mt-1"><textarea id="fb-text-${v.id}_de_cta" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Korrektur CTA..."></textarea></div>
+
+                            </div>
+
+
+
+                            <div id="fb-box-${v.id}_de" class="feedback-box pt-3 border-t border-red-50 mt-2">
+
+                                <textarea id="fb-text-${v.id}_de" class="w-full p-3 text-sm border border-red-200 rounded-lg bg-red-50/50 focus:ring-2 focus:ring-red-200 outline-none resize-y min-h-[80px]" placeholder="Allg. Kommentar DE..."></textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+                container.appendChild(div);
+
+            });
+
+        }
+
+
+
+        function renderCarousel() {
+
+            ['fr', 'de'].forEach(lang => {
+
+                document.getElementById(`carousel-${lang}-container`).innerHTML = carouselCards[lang].map(c => `
+
+                    <div class="group/item relative">
+
+                        <div class="flex justify-between items-end mb-1">
+
+                            <label class="text-xs font-bold text-slate-400 uppercase">${c.label}</label>
+
+                            ${createFeedbackToggle(c.id + '_' + lang, true)}
+
+                        </div>
+
+                        ${createCopyField(c.id + '_' + lang, null, c.text)}
+
+                        <div id="fb-box-${c.id}_${lang}" class="feedback-box mt-2">
+
+                            <textarea id="fb-text-${c.id}_${lang}" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Correction..."></textarea>
+
+                        </div>
+
+                    </div>
+
+                `).join('');
+
+            });
+
+        }
+
+
+
+        // --- RENDER FUNCTIONS (GOOGLE ADS) ---
+
+        function renderGoogleAds() {
+
+            // Helper to render a list of items
+
+            const renderList = (id, title, items, prefix) => {
+
+                const container = document.getElementById(id);
+
+                // Create a wrapper for the section
+
+                const sectionDiv = document.createElement('div');
+
+                sectionDiv.className = "bg-white border border-slate-200 rounded-lg p-4 mb-4";
+
+                
+
+                const header = document.createElement('div');
+
+                header.className = "flex justify-between items-center mb-3 pb-2 border-b border-slate-100";
+
+                header.innerHTML = `<h4 class="text-sm font-bold text-slate-700 uppercase tracking-wide">${title} <span class="text-slate-400 font-normal normal-case ml-1">(${items.length})</span></h4>`;
+
+                sectionDiv.appendChild(header);
+
+
+
+                const list = document.createElement('div');
+
+                list.className = "space-y-2";
+
+                
+
+                items.forEach((item, idx) => {
+
+                    const itemId = `${prefix}_${idx}`;
+
+                    const row = document.createElement('div');
+
+                    row.className = "flex gap-2 items-start group/gitem";
+
+                    row.innerHTML = `
+
+                        <div class="flex-grow text-sm text-slate-700 bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 p-2 rounded cursor-pointer transition relative" onclick="copyText(this)">
+
+                            ${item}
+
+                            <div class="absolute top-1.5 right-2 copy-icon text-blue-600 pointer-events-none opacity-0 group-hover/gitem:opacity-100">📋</div>
+
+                        </div>
+
+                        ${createFeedbackToggle(itemId, true)}
+
+                    `;
+
+                    // Add feedback box hidden by default
+
+                    const fbBox = document.createElement('div');
+
+                    fbBox.id = `fb-box-${itemId}`;
+
+                    fbBox.className = "feedback-box w-full mt-1 ml-1";
+
+                    fbBox.innerHTML = `<textarea id="fb-text-${itemId}" class="w-full p-2 text-xs border border-red-200 rounded bg-red-50/30" placeholder="Correction..."></textarea>`;
+
+                    
+
+                    const wrapper = document.createElement('div');
+
+                    wrapper.appendChild(row);
+
+                    wrapper.appendChild(fbBox);
+
+                    list.appendChild(wrapper);
+
+                });
+
+                
+
+                sectionDiv.appendChild(list);
+
+                container.appendChild(sectionDiv);
+
+            };
+
+
+
+            // Render FR
+
+            renderList('google-fr-headlines', 'Titres (30 car.)', googleAdsData.fr.headlines, 'g_fr_h');
+
+            renderList('google-fr-longheadlines', 'Titres Longs (90 car.)', googleAdsData.fr.longHeadlines, 'g_fr_lh');
+
+            renderList('google-fr-descriptions', 'Descriptions (90 car.)', googleAdsData.fr.descriptions, 'g_fr_d');
+
+            renderList('google-fr-callouts', 'Accroches (25 car.)', googleAdsData.fr.callouts, 'g_fr_c');
+
+
+
+            // Render DE
+
+            renderList('google-de-headlines', 'Titres (30 car.)', googleAdsData.de.headlines, 'g_de_h');
+
+            renderList('google-de-longheadlines', 'Titres Longs (90 car.)', googleAdsData.de.longHeadlines, 'g_de_lh');
+
+            renderList('google-de-descriptions', 'Descriptions (90 car.)', googleAdsData.de.descriptions, 'g_de_d');
+
+            renderList('google-de-callouts', 'Accroches (25 car.)', googleAdsData.de.callouts, 'g_de_c');
+
+        }
+
+
+
+
+
+        // --- LOGIC ---
+
+
+
+        function switchSection(id) {
+
+            ['variations', 'carousel', 'video', 'google'].forEach(s => {
+
+                document.getElementById(`view-${s}`).classList.add('hidden');
+
+                document.getElementById(`tab-${s}`).classList.remove('active-tab');
+
+                document.getElementById(`tab-${s}`).classList.add('inactive-tab');
+
+            });
+
+            document.getElementById(`view-${id}`).classList.remove('hidden');
+
+            document.getElementById(`tab-${id}`).classList.add('active-tab');
+
+            document.getElementById(`tab-${id}`).classList.remove('inactive-tab');
+
+        }
+
+
+
+        function toggleFeedback(id) {
+
+            const box = document.getElementById(`fb-box-${id}`);
+
+            const text = document.getElementById(`fb-text-${id}`);
+
+            if(box.style.display === 'block') {
+
+                if(!text.value.trim()) box.style.display = 'none';
+
+            } else {
+
+                box.style.display = 'block';
+
+                text.focus();
+
+            }
+
+        }
+
+
+
+        function copyText(el) {
+
+            let text = el.innerText.trim();
+
+            // Remove the clipboard icon text if captured
+
+            text = text.replace('📋', '');
+
+            
+
+            if (navigator.clipboard && window.isSecureContext) {
+
+                navigator.clipboard.writeText(text).then(() => {
+
+                    const toast = document.getElementById('toast');
+
+                    toast.classList.remove('translate-y-20', 'opacity-0');
+
+                    setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 2000);
+
+                }).catch(err => {
+
+                    console.error('Async: Could not copy text: ', err);
+
+                    fallbackCopyTextToClipboard(text);
+
+                });
+
+            } else {
+
+                fallbackCopyTextToClipboard(text);
+
+            }
+
+        }
+
+
+
+        function fallbackCopyTextToClipboard(text) {
+
+            var textArea = document.createElement("textarea");
+
+            textArea.value = text;
+
+            
+
+            // Avoid scrolling to bottom
+
+            textArea.style.top = "0";
+
+            textArea.style.left = "0";
+
+            textArea.style.position = "fixed";
+
+
+
+            document.body.appendChild(textArea);
+
+            textArea.focus();
+
+            textArea.select();
+
+
+
+            try {
+
+                var successful = document.execCommand('copy');
+
+                if(successful) {
+
+                    const toast = document.getElementById('toast');
+
+                    toast.classList.remove('translate-y-20', 'opacity-0');
+
+                    setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 2000);
+
+                } else {
+
+                    alert('Impossible de copier automatiquement.');
+
+                }
+
+            } catch (err) {
+
+                console.error('Fallback: Oops, unable to copy', err);
+
+                alert('Erreur lors de la copie.');
+
+            }
+
+
+
+            document.body.removeChild(textArea);
+
+        }
+
+
+
+        function exportFeedback() {
+
+            let report = "RETOURS COPYWRITING ADS (domo.GO)\n========================================\n\n";
+
+            let hasFeedback = false;
+
+
+
+            document.querySelectorAll('textarea').forEach(ta => {
+
+                if(ta.value.trim()) {
+
+                    hasFeedback = true;
+
+                    let id = ta.id.replace('fb-text-', '');
+
+                    let context = id.startsWith('g_') ? 'GOOGLE ADS' : 'META ADS';
+
+                    let lang = id.includes('fr') ? 'FR' : (id.includes('de') ? 'DE' : 'GLOBAL');
+
+                    report += `[${context} - ${lang}] ID: ${id}\n> FEEDBACK: ${ta.value}\n----------------------------------------\n`;
+
+                }
+
+            });
+
+
+
+            if(!hasFeedback) {
+
+                alert("Aucun commentaire n'a été saisi.");
+
+                return;
+
+            }
+
+
+
+            document.getElementById('export-area').value = report;
+
+            document.getElementById('export-modal').classList.remove('hidden');
+
+            document.getElementById('export-modal').classList.add('flex');
+
+        }
+
+
+
+        function closeModal() {
+
+            document.getElementById('export-modal').classList.add('hidden');
+
+            document.getElementById('export-modal').classList.remove('flex');
+
+        }
+
+
+
+        function copyExport() {
+
+            const text = document.getElementById('export-area').value;
+
+            // Use fallback here as well
+
+            if (navigator.clipboard && window.isSecureContext) {
+
+                navigator.clipboard.writeText(text).then(() => {
+
+                    alert("Copié !");
+
+                }).catch(err => {
+
+                    fallbackCopyTextToClipboard(text);
+
+                });
+
+            } else {
+
+                fallbackCopyTextToClipboard(text);
+
+            }
+
+        }
+
+
+
+        // Init
+
+        renderVariations();
+
+        renderCarousel();
+
+        renderGoogleAds();
+
+
+
+    </script>
+
+</body>
+
+</html>
